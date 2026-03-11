@@ -67,18 +67,24 @@ Deployment
 
 2. Install dependencies:
 
+In the root foler:
+
+```bash
+npm install
+```
+
 In frontend folder:
 
 ```bash
 cd frontend
-npm run dev
+npm install
 ```
 
 In backend folder:
 
 ```bash
 cd backend
-npm run dev
+npm install
 ```
 
 Additionally, on the backend folder create an .env file with:
@@ -91,5 +97,13 @@ Please see the .env.example file inside the backend folder for more instructions
 
 3. Run the server
 
+In frontend folder:
 ```bash
+cd frontend
+npm run dev
+```
+On a separate terminal:
+```bash
+cd backend
+npm run dev
 ```
