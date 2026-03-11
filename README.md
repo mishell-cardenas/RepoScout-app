@@ -67,14 +67,18 @@ Deployment
 
 2. Install dependencies:
 
-In root folder:
+In frontend folder:
 
 ```bash
+cd frontend
+npm run dev
 ```
 
 In backend folder:
 
 ```bash
+cd backend
+npm run dev
 ```
 
 Additionally, on the backend folder create an .env file with:
