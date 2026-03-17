@@ -8,6 +8,7 @@ function ProfileSidebar(props) {
     username,
     profileImage,
     onEditInfo,
+    onEditUsername,
     onAddImage,
   } = props;
 
@@ -21,25 +22,28 @@ function ProfileSidebar(props) {
     imageContent = (
       <div className="profile-sidebar-empty-image">
         <i className="bi bi-person-fill profile-sidebar-empty-icon"></i>
-        <button
-          type="button"
-          className="btn btn-dark"
-          onClick={onAddImage}
-        >
-          <i className="bi bi-pencil"></i>
-        </button>
       </div>
     );
   }
 
   return (
     <aside className="profile-sidebar">
-      <div className="profile-sidebar-image-container">{imageContent}</div>
+      <div className="profile-sidebar-image-container">
+        {imageContent}
+
+        <button
+          type="button"
+          className="btn btn-light border profile-sidebar-image-edit-button"
+          onClick={onAddImage}
+        >
+          <i className="bi bi-pencil"></i>
+        </button>
+      </div>
 
       <div className="mt-4">
         <div className="d-flex align-items-center gap-2">
           <h1 className="profile-sidebar-name mb-0">
-            {firstName} {lastName}
+            {firstName}, {lastName}
           </h1>
 
           <button
@@ -50,10 +54,18 @@ function ProfileSidebar(props) {
             <i className="bi bi-pencil"></i>
           </button>
         </div>
+        <div className="d-flex align-items-center gap-2">
+          <h2 className="profile-sidebar-username mt-2">@{username}</h2>
 
-        <h2 className="profile-sidebar-username mt-2">@{username}</h2>
+          <button
+            type="button"
+            className="btn btn-sm btn-light border"
+            onClick={onEditUsername}
+          >
+            <i className="bi bi-pencil"></i>
+          </button>
+        </div>
       </div>
-
     </aside>
   );
 }
@@ -64,6 +76,7 @@ ProfileSidebar.propTypes = {
   username: PropTypes.string.isRequired,
   profileImage: PropTypes.string.isRequired,
   onEditInfo: PropTypes.func.isRequired,
+  onEditUsername: PropTypes.func.isRequired,
   onAddImage: PropTypes.func.isRequired,
 };
 

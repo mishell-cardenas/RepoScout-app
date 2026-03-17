@@ -70,7 +70,7 @@ function TechSelectModal(props) {
           </button>
 
           <button type="button" className="btn btn-dark" onClick={onSave}>
-            Save Changes
+            Ok
           </button>
         </div>
       </div>

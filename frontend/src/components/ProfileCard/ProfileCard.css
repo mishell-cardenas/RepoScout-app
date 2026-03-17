@@ -14,3 +14,14 @@
   font-weight: 700;
   color: #24292f;
 }
+
+.profile-sidebar-dashboard-btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.9rem 1rem;
+  background-color: white;
+  border: 1px solid #d0d7de;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+}
