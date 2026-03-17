@@ -7,8 +7,8 @@ import { TECHNOLOGIES } from "../data/technologies.js";
 import "./ProfilePage.css";
 
 const DEFAULT_PROFILE = {
-  firstName: "First_name",
-  lastName: "Last_name",
+  firstName: "first_name",
+  lastName: "last_name",
   username: "github_username",
   profileImage: "",
   languages: [],
@@ -175,6 +175,17 @@ function ProfilePage() {
       return;
     }
 
+    setProfile((previousProfile) => {
+      return {
+        ...previousProfile,
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+      };
+    });
+  };
+
+  const handleEditUsername = () => {
+
     const username = prompt("Enter GitHub username:", profile.username);
     if (username === null) {
       return;
@@ -183,8 +194,6 @@ function ProfilePage() {
     setProfile((previousProfile) => {
       return {
         ...previousProfile,
-        firstName: firstName.trim(),
-        lastName: lastName.trim(),
         username: username.trim(),
       };
     });
@@ -203,35 +212,6 @@ function ProfilePage() {
         profileImage: imageUrl.trim(),
       };
     });
-  };
-
-  const handleDeleteImage = async () => {
-    try {
-      setSaving(true);
-      setMessage("");
-
-      const response = await fetch("/api/profile/image", {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete image");
-      }
-
-      setProfile((previousProfile) => {
-        return {
-          ...previousProfile,
-          profileImage: "",
-        };
-      });
-
-      setMessage("Profile image removed.");
-    } catch (error) {
-      console.error("Error deleting image:", error);
-      setMessage("Failed to remove image.");
-    } finally {
-      setSaving(false);
-    }
   };
 
   const handleDeleteProfile = async () => {
@@ -294,6 +274,7 @@ function ProfilePage() {
               username={profile.username}
               profileImage={profile.profileImage}
               onEditInfo={handleEditInfo}
+              onEditUsername={handleEditUsername}
               onAddImage={handleAddImage}
             />
 
