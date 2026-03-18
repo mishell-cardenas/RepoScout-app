@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="navbar-custom navbar navbar-expand-lg px-4">
       <div className="container-fluid">
         <div className="d-flex align-items-center gap-4">
-          <i className="bi bi-github navbar-github-icon"></i>
+          <i className="bi bi-file-earmark-code navbar-github-icon"></i>
 
           <div className="d-flex align-items-center gap-4">
             <Link to="/" className="navbar-link">

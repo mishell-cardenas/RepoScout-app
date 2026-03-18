@@ -57,9 +57,9 @@ function RepoLogPage() {
     <div>
       <Navbar />
       <div className="project-log-page">
-        <div className="project-log-container">
-          <h1 className="project-log-page-title">
-            Open-source repo: {repoName}
+        <div className="project-log-container ">
+          <h1 className="project-log-page-title bi-journal-code">
+            Repo: {repoName}
           </h1>
 
           <div className="project-log-layout">

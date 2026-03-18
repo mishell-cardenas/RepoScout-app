@@ -120,7 +120,7 @@ function DashboardPage() {
       <div className="container-fluid dashboard-page-content py-4 px-4 mt-5">
         <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
           <div className="d-flex align-items-center gap-2">
-            <i className="bi bi-person-circle dashboard-page-icon"></i>
+            <i className="bi bi-archive-fill dashboard-page-icon"></i>
             <h1 className="dashboard-page-title mb-0">Your Projects</h1>
           </div>
 

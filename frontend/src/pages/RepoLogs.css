@@ -18,6 +18,10 @@
   color: #111827;
 }
 
+.project-log-page-title::before {
+  margin-right: 8px;
+}
+
 .project-log-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
