@@ -28,6 +28,8 @@ https://docs.google.com/presentation/d/12ldf5UGDdYHakuqcsu8XN2qo2WKiWl5JAH5HUkK9
 
 ## 📹 Video Demo
 
+https://www.youtube.com/watch?v=oGvXs9n5nFo
+
 ## How to use RepoScout
 
 ### Getting Started
