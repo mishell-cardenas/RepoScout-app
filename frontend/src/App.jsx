@@ -1,8 +1,8 @@
-// import RepoList from "./components/RepoList";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import { AuthProvider, useAuth } from "./context/AuthContext.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import HomePage from "./pages/Homepage.jsx";
+import HomePage from "./pages/HomePage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import RecommendationPage from "./pages/RecommendationPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
@@ -13,7 +13,10 @@ function ProtectedRoute({ children }) {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ minHeight: "100vh" }}
+      >
         <div className="spinner-border text-secondary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
@@ -28,6 +31,10 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 function PublicRoute({ children }) {
   const { user, loading } = useAuth();
 
@@ -41,6 +48,10 @@ function PublicRoute({ children }) {
 
   return children;
 }
+
+PublicRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 function App() {
   return (

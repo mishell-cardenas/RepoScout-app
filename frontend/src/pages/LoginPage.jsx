@@ -96,7 +96,11 @@ function LoginPage() {
               className={`login-tech-option ${isSelected ? "login-tech-option-selected" : ""}`}
               onClick={() => toggleSelection(selected, setSelected, tech.id)}
             >
-              <img src={tech.badgeUrl} alt={tech.name} className="login-tech-badge" />
+              <img
+                src={tech.badgeUrl}
+                alt={tech.name}
+                className="login-tech-badge"
+              />
               {isSelected && (
                 <span className="login-tech-check">
                   <i className="bi bi-check-circle-fill"></i>
@@ -122,7 +126,9 @@ function LoginPage() {
           <p className="login-tagline">Stay on top of your FOSS journey!</p>
 
           <form className="login-form" onSubmit={handleLogin}>
-            {error && <div className="alert alert-danger login-error">{error}</div>}
+            {error && (
+              <div className="alert alert-danger login-error">{error}</div>
+            )}
 
             <input
               type="text"
@@ -182,7 +188,9 @@ function LoginPage() {
           <p className="login-tagline">Step 1 of 2 — Your info</p>
 
           <form className="login-form" onSubmit={handleNextStep}>
-            {error && <div className="alert alert-danger login-error">{error}</div>}
+            {error && (
+              <div className="alert alert-danger login-error">{error}</div>
+            )}
 
             <input
               type="text"
@@ -250,10 +258,16 @@ function LoginPage() {
       </nav>
 
       <div className="login-container login-container-wide">
-        <h1 className="login-brand-sm">Almost there, {firstName || username}!</h1>
-        <p className="login-tagline">Step 2 of 2 — Select your skills so we can match repos for you</p>
+        <h1 className="login-brand-sm">
+          Almost there, {firstName || username}!
+        </h1>
+        <p className="login-tagline">
+          Step 2 of 2 — Select your skills so we can match repos for you
+        </p>
 
-        {error && <div className="alert alert-danger login-error mb-3">{error}</div>}
+        {error && (
+          <div className="alert alert-danger login-error mb-3">{error}</div>
+        )}
 
         <div className="login-tech-section">
           <h3 className="login-tech-section-title">Languages</h3>
@@ -261,7 +275,9 @@ function LoginPage() {
         </div>
 
         <div className="login-tech-section">
-          <h3 className="login-tech-section-title">Frameworks, Libraries &amp; Tools</h3>
+          <h3 className="login-tech-section-title">
+            Frameworks, Libraries &amp; Tools
+          </h3>
           {renderTechGrid("tools", selectedTools, setSelectedTools)}
         </div>
 
@@ -281,7 +297,7 @@ function LoginPage() {
 
           <button
             type="button"
-            className={`btn login-submit-btn ${(selectedLanguages.length + selectedTools.length + selectedDatabases.length) > 0 ? "login-submit-btn-ready" : "login-submit-btn-dim"}`}
+            className={`btn login-submit-btn ${selectedLanguages.length + selectedTools.length + selectedDatabases.length > 0 ? "login-submit-btn-ready" : "login-submit-btn-dim"}`}
             onClick={handleRegisterSubmit}
             disabled={submitting}
           >

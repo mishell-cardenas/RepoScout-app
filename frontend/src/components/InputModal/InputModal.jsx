@@ -4,7 +4,13 @@ import "./InputModal.css";
 
 function InputModal(props) {
   const {
-    show, title, fields, initialValues, submitLabel, onSubmit, onCancel,
+    show,
+    title,
+    fields,
+    initialValues,
+    submitLabel,
+    onSubmit,
+    onCancel,
   } = props;
 
   const [values, setValues] = useState({});

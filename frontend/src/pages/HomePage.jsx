@@ -45,7 +45,9 @@ function HomePage() {
   }, []);
 
   // Get unique languages for the filter dropdown
-  const languages = [...new Set(repos.map((r) => r.language).filter(Boolean))].sort();
+  const languages = [
+    ...new Set(repos.map((r) => r.language).filter(Boolean)),
+  ].sort();
 
   // Apply filters
   const filtered = repos.filter((r) => {
@@ -55,8 +57,7 @@ function HomePage() {
       (r.fullName || "").toLowerCase().includes(searchFilter.toLowerCase()) ||
       (r.description || "").toLowerCase().includes(searchFilter.toLowerCase());
 
-    const matchesLanguage =
-      !languageFilter || r.language === languageFilter;
+    const matchesLanguage = !languageFilter || r.language === languageFilter;
 
     return matchesSearch && matchesLanguage;
   });
@@ -69,7 +70,10 @@ function HomePage() {
   // Pagination
   const totalPages = Math.ceil(filtered.length / REPOS_PER_PAGE);
   const startIndex = (currentPage - 1) * REPOS_PER_PAGE;
-  const paginatedRepos = filtered.slice(startIndex, startIndex + REPOS_PER_PAGE);
+  const paginatedRepos = filtered.slice(
+    startIndex,
+    startIndex + REPOS_PER_PAGE,
+  );
 
   function handlePageChange(page) {
     setCurrentPage(page);
@@ -174,12 +178,16 @@ function HomePage() {
         {!loading && filtered.length > 0 && (
           <>
             <p className="home-page-results-count">
-              {filtered.length} repositories — page {currentPage} of {totalPages}
+              {filtered.length} repositories — page {currentPage} of{" "}
+              {totalPages}
             </p>
 
             <div className="row g-3">
               {paginatedRepos.map((repo) => (
-                <div key={repo.githubId || repo._id} className="col-12 col-md-6 col-lg-4">
+                <div
+                  key={repo.githubId || repo._id}
+                  className="col-12 col-md-6 col-lg-4"
+                >
                   <div className="home-repo-card">
                     <div className="d-flex align-items-center gap-2 mb-2">
                       <i className="bi bi-journal-code home-repo-icon"></i>
@@ -220,7 +228,8 @@ function HomePage() {
                         <i className="bi bi-star"></i> {formatCount(repo.stars)}
                       </span>
                       <span className="home-repo-stat">
-                        <i className="bi bi-diagram-2"></i> {formatCount(repo.forks || 0)}
+                        <i className="bi bi-diagram-2"></i>{" "}
+                        {formatCount(repo.forks || 0)}
                       </span>
                     </div>
 

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import "./RepoLogEntry.css";
 import { useState } from "react";
 
-function RepoLogEntry( {onAddLog, repoName} ) {
+function RepoLogEntry({ onAddLog, repoName }) {
   const [formData, setFormData] = useState({
     date: "",
     focusArea: "",

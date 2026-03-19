@@ -84,7 +84,10 @@ function RecommendationPage() {
   // Pagination
   const totalPages = Math.ceil(filtered.length / MATCHES_PER_PAGE);
   const startIndex = (currentPage - 1) * MATCHES_PER_PAGE;
-  const paginatedMatches = filtered.slice(startIndex, startIndex + MATCHES_PER_PAGE);
+  const paginatedMatches = filtered.slice(
+    startIndex,
+    startIndex + MATCHES_PER_PAGE,
+  );
 
   function handlePageChange(page) {
     setCurrentPage(page);
@@ -157,7 +160,9 @@ function RecommendationPage() {
         <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
           <div className="d-flex align-items-center gap-2">
             <i className="bi bi-telescope recommendation-page-icon"></i>
-            <h1 className="recommendation-page-title bi-lightning-charge-fill mb-0">Your Matches</h1>
+            <h1 className="recommendation-page-title bi-lightning-charge-fill mb-0">
+              Your Matches
+            </h1>
           </div>
 
           <div className="recommendation-page-search">

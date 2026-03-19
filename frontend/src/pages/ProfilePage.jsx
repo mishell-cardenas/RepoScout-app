@@ -247,7 +247,10 @@ function ProfilePage() {
           <div className="alert alert-secondary">Saving changes...</div>
         )}
         <div className="d-flex align-items-center mb-4 profile-page-icon">
-          <h1 className="profile-page-title mb-0 bi-person-circle"> Your Profile</h1>
+          <h1 className="profile-page-title mb-0 bi-person-circle">
+            {" "}
+            Your Profile
+          </h1>
         </div>
         <div className="row g-4 justify-content-center align-items-stretch">
           <div className="col-lg-4 d-flex flex-column">
@@ -331,8 +334,16 @@ function ProfilePage() {
         show={showEditName}
         title="Edit Name"
         fields={[
-          { key: "firstName", label: "First Name", placeholder: "Enter first name" },
-          { key: "lastName", label: "Last Name", placeholder: "Enter last name" },
+          {
+            key: "firstName",
+            label: "First Name",
+            placeholder: "Enter first name",
+          },
+          {
+            key: "lastName",
+            label: "Last Name",
+            placeholder: "Enter last name",
+          },
         ]}
         initialValues={{
           firstName: profile.firstName,
@@ -347,7 +358,11 @@ function ProfilePage() {
         show={showEditUsername}
         title="Edit GitHub Username"
         fields={[
-          { key: "username", label: "GitHub Username", placeholder: "Enter your GitHub username" },
+          {
+            key: "username",
+            label: "GitHub Username",
+            placeholder: "Enter your GitHub username",
+          },
         ]}
         initialValues={{ username: profile.username }}
         submitLabel="Save"

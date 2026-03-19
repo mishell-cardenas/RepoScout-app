@@ -13,14 +13,26 @@ const SALT_ROUNDS = 10;
 authRouter.post("/register", async (req, res) => {
   try {
     const db = req.db;
-    const { username, password, firstName, lastName, languages, tools, databases } = req.body;
+    const {
+      username,
+      password,
+      firstName,
+      lastName,
+      languages,
+      tools,
+      databases,
+    } = req.body;
 
     if (!username || !password) {
-      return res.status(400).json({ message: "Username and password are required" });
+      return res
+        .status(400)
+        .json({ message: "Username and password are required" });
     }
 
     if (password.length < 6) {
-      return res.status(400).json({ message: "Password must be at least 6 characters" });
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 6 characters" });
     }
 
     // Check if username already exists
@@ -47,15 +59,20 @@ authRouter.post("/register", async (req, res) => {
     const result = await db.collection("users").insertOne(newUser);
 
     // Auto-login after registration
-    const user = await db.collection("users").findOne({ _id: result.insertedId });
+    const user = await db
+      .collection("users")
+      .findOne({ _id: result.insertedId });
 
     req.login(user, (err) => {
       if (err) {
         console.error("Auto-login error:", err);
-        return res.status(201).json({ message: "Registered successfully. Please log in." });
+        return res
+          .status(201)
+          .json({ message: "Registered successfully. Please log in." });
       }
 
-      const { password: _, ...safeUser } = user;
+      const safeUser = { ...user };
+      delete safeUser.password;
       return res.status(201).json(safeUser);
     });
   } catch (error) {
@@ -74,7 +91,9 @@ authRouter.post("/login", (req, res, next) => {
       return res.status(500).json({ message: "Login failed" });
     }
     if (!user) {
-      return res.status(401).json({ message: info?.message || "Invalid credentials" });
+      return res
+        .status(401)
+        .json({ message: info?.message || "Invalid credentials" });
     }
 
     req.login(user, (loginErr) => {
@@ -82,7 +101,8 @@ authRouter.post("/login", (req, res, next) => {
         return res.status(500).json({ message: "Login failed" });
       }
 
-      const { password: _, ...safeUser } = user;
+      const safeUser = { ...user };
+      delete safeUser.password;
       return res.json(safeUser);
     });
   })(req, res, next);
@@ -112,7 +132,8 @@ authRouter.get("/me", (req, res) => {
     return res.status(401).json({ message: "Not authenticated" });
   }
 
-  const { password: _, ...safeUser } = req.user;
+  const safeUser = { ...req.user };
+  delete safeUser.password;
   return res.json(safeUser);
 });
 

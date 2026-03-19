@@ -21,8 +21,9 @@ function ProfileCard(props) {
     <div>
       <div className="card profile-card shadow-sm">
         <div className="card-body p-4">
-
-          <h2 className="profile-card-title">Hi <em>{firstName}</em>, add your skills here:</h2>
+          <h2 className="profile-card-title">
+            Hi <em>{firstName}</em>, add your skills here:
+          </h2>
 
           <hr />
 
