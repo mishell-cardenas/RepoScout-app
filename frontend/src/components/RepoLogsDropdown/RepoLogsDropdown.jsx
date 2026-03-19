@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./RepoLogsDropdown.css";
 import { useState } from "react";
 
@@ -212,5 +213,18 @@ function RepoLogsDropdown({ log, onUpdateLog, onDeleteLog }) {
     </div>
   );
 }
+
+RepoLogsDropdown.propTypes = {
+  log: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    focusArea: PropTypes.string,
+    filesModified: PropTypes.string,
+    bugsFixed: PropTypes.string,
+    learned: PropTypes.string,
+    date: PropTypes.string,
+  }).isRequired,
+  onUpdateLog: PropTypes.func.isRequired,
+  onDeleteLog: PropTypes.func.isRequired,
+};
 
 export default RepoLogsDropdown;

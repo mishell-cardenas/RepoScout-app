@@ -1,4 +1,4 @@
-import { func } from "prop-types";
+import PropTypes from "prop-types";
 import "./RepoLogEntry.css";
 import { useState } from "react";
 
@@ -135,4 +135,9 @@ function RepoLogEntry( {onAddLog, repoName} ) {
     </div>
   );
 }
+RepoLogEntry.propTypes = {
+  onAddLog: PropTypes.func.isRequired,
+  repoName: PropTypes.string.isRequired,
+};
+
 export default RepoLogEntry;
