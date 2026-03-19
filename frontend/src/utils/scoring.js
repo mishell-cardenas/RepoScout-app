@@ -37,7 +37,11 @@ export function scoreRepo(repo, profile) {
   const profileDatabases = profile.databases || [];
 
   // All profile tech IDs combined for topic matching
-  const allProfileTech = [...profileLangs, ...profileTools, ...profileDatabases];
+  const allProfileTech = [
+    ...profileLangs,
+    ...profileTools,
+    ...profileDatabases,
+  ];
 
   // --- Language match (+3) ---
   const langId = LANGUAGE_ALIASES[repoLang] || repoLang;

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const AuthContext = createContext(null);
 
@@ -41,12 +42,23 @@ export function AuthProvider({ children }) {
     return data;
   }
 
-  async function register(username, password, firstName, lastName, languages, tools, databases) {
+  async function register(
+    username,
+    password,
+    firstName,
+    lastName,
+    languages,
+    tools,
+    databases,
+  ) {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username, password, firstName, lastName,
+        username,
+        password,
+        firstName,
+        lastName,
         languages: languages || [],
         tools: tools || [],
         databases: databases || [],
@@ -74,6 +86,10 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export function useAuth() {
   const context = useContext(AuthContext);

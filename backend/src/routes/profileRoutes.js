@@ -14,7 +14,8 @@ profileRouter.get("/", async (req, res) => {
       return res.status(404).json({ message: "No profile found" });
     }
 
-    const { password: _, ...safeProfile } = profile;
+    const safeProfile = { ...profile };
+    delete safeProfile.password;
     return res.status(200).json(safeProfile);
   } catch (error) {
     console.error("Error fetching profile:", error);
@@ -57,7 +58,8 @@ profileRouter.put("/", async (req, res) => {
       .collection("users")
       .findOne({ _id: userId });
 
-    const { password: _, ...safeProfile } = updatedProfile;
+    const safeProfile = { ...updatedProfile };
+    delete safeProfile.password;
     return res.status(200).json(safeProfile);
   } catch (error) {
     console.error("Error saving profile:", error);
@@ -85,7 +87,9 @@ profileRouter.delete("/", async (req, res) => {
       }
       req.session.destroy(() => {
         res.clearCookie("connect.sid");
-        return res.status(200).json({ message: "Account deleted successfully" });
+        return res
+          .status(200)
+          .json({ message: "Account deleted successfully" });
       });
     });
   } catch (error) {
@@ -114,7 +118,8 @@ profileRouter.delete("/image", async (req, res) => {
       .collection("users")
       .findOne({ _id: userId });
 
-    const { password: _, ...safeProfile } = updatedProfile;
+    const safeProfile = { ...updatedProfile };
+    delete safeProfile.password;
     return res.status(200).json(safeProfile);
   } catch (error) {
     console.error("Error deleting image:", error);

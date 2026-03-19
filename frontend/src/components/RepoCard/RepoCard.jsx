@@ -85,8 +85,7 @@ function RepoCard(props) {
         </span>
 
         <span className="repo-card-stat">
-          <i className="bi bi-diagram-2"></i>{" "}
-          {formatCount(repo.forks || 0)}
+          <i className="bi bi-diagram-2"></i> {formatCount(repo.forks || 0)}
         </span>
 
         <span className="repo-card-stat">

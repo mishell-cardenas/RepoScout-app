@@ -43,8 +43,17 @@ router.post("/user", async (req, res) => {
   try {
     const userId = req.user._id.toString();
     const {
-      githubId, name, fullName, owner, description,
-      url, language, stars, forks, openIssues, topics,
+      githubId,
+      name,
+      fullName,
+      owner,
+      description,
+      url,
+      language,
+      stars,
+      forks,
+      openIssues,
+      topics,
     } = req.body;
 
     if (!githubId || !name) {

@@ -2,7 +2,15 @@ import PropTypes from "prop-types";
 import "./ConfirmModal.css";
 
 function ConfirmModal(props) {
-  const { show, title, message, confirmLabel, confirmVariant, onConfirm, onCancel } = props;
+  const {
+    show,
+    title,
+    message,
+    confirmLabel,
+    confirmVariant,
+    onConfirm,
+    onCancel,
+  } = props;
 
   if (!show) {
     return null;
@@ -10,10 +18,7 @@ function ConfirmModal(props) {
 
   return (
     <div className="confirm-modal-backdrop" onClick={onCancel}>
-      <div
-        className="confirm-modal-box"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="confirm-modal-box" onClick={(e) => e.stopPropagation()}>
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h3 className="confirm-modal-title mb-0">{title}</h3>
 

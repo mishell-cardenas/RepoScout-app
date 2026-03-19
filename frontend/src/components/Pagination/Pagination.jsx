@@ -25,7 +25,11 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
     if (i > 0 && pageNumbers[i] - pageNumbers[i - 1] > 1) {
       items.push({ type: "ellipsis", key: `ellipsis-${i}` });
     }
-    items.push({ type: "page", number: pageNumbers[i], key: `page-${pageNumbers[i]}` });
+    items.push({
+      type: "page",
+      number: pageNumbers[i],
+      key: `page-${pageNumbers[i]}`,
+    });
   }
 
   return (
