@@ -101,7 +101,7 @@ Frontend
 - React.js
 - HTML5
 - CSS
-- JavaScript (Vanilla)
+- JavaScript 
 - Bootstrap
 
 Development
