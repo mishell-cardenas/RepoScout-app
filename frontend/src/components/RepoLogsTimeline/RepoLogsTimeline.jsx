@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./RepoLogsTimeline.css";
 import RepoLogsDropdown from "../RepoLogsDropdown/RepoLogsDropdown.jsx";
 
@@ -98,5 +99,19 @@ function RepoLogsTimeline({ logs, setLogs }) {
     </div>
   );
 }
+
+RepoLogsTimeline.propTypes = {
+  logs: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      focusArea: PropTypes.string,
+      filesModified: PropTypes.string,
+      bugsFixed: PropTypes.string,
+      learned: PropTypes.string,
+      date: PropTypes.string,
+    }),
+  ).isRequired,
+  setLogs: PropTypes.func.isRequired,
+};
 
 export default RepoLogsTimeline;
