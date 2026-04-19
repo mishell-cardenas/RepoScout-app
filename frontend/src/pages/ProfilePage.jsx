@@ -35,6 +35,7 @@ function ProfilePage() {
   const [showEditUsername, setShowEditUsername] = useState(false);
   const [showEditImage, setShowEditImage] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [modalSnapshot, setModalSnapshot] = useState(null);
 
   const getSelectedBadges = (categoryKey, selectedIds) => {
     return TECHNOLOGIES[categoryKey].filter((technology) => {
@@ -241,7 +242,7 @@ function ProfilePage() {
     <div className="profile-page">
       <Navbar />
 
-      <div className="container-fluid profile-page-content py-4 px-4 mt-5">
+      <main className="container-fluid profile-page-content py-4 px-4 mt-5">
         {message && <div className="alert alert-info">{message}</div>}
         {saving && (
           <div className="alert alert-secondary">Saving changes...</div>
@@ -289,25 +290,40 @@ function ProfilePage() {
               languages={selectedLanguages}
               tools={selectedTools}
               databases={selectedDatabases}
-              onEditLanguages={() => setActiveModal("languages")}
-              onEditTools={() => setActiveModal("tools")}
-              onEditDatabases={() => setActiveModal("databases")}
+              onEditLanguages={() => {
+                setModalSnapshot(profile.languages);
+                setActiveModal("languages");
+              }}
+              onEditTools={() => {
+                setModalSnapshot(profile.tools);
+                setActiveModal("tools");
+              }}
+              onEditDatabases={() => {
+                setModalSnapshot(profile.databases);
+                setActiveModal("databases");
+              }}
               onRemoveLanguage={(id) => handleRemoveBadge("languages", id)}
               onRemoveTool={(id) => handleRemoveBadge("tools", id)}
               onRemoveDatabase={(id) => handleRemoveBadge("databases", id)}
             />
           </div>
         </div>
-      </div>
+      </main>
 
       <TechSelectModal
         show={activeModal === "languages"}
         title="Edit Languages"
         options={TECHNOLOGIES.languages}
         selectedIds={profile.languages}
-        onClose={() => setActiveModal("")}
+        onClose={() => {
+          setProfile((prev) => ({ ...prev, languages: modalSnapshot }));
+          setActiveModal("");
+        }}
         onToggle={(id) => handleToggleSelection("languages", id)}
-        onSave={() => setActiveModal("")}
+        onSave={() => {
+          handleSaveProfile();
+          setActiveModal("");
+        }}
       />
 
       <TechSelectModal
@@ -315,9 +331,15 @@ function ProfilePage() {
         title="Edit Frameworks, Libraries, and Tools"
         options={TECHNOLOGIES.tools}
         selectedIds={profile.tools}
-        onClose={() => setActiveModal("")}
+        onClose={() => {
+          setProfile((prev) => ({ ...prev, tools: modalSnapshot }));
+          setActiveModal("");
+        }}
         onToggle={(id) => handleToggleSelection("tools", id)}
-        onSave={() => setActiveModal("")}
+        onSave={() => {
+          handleSaveProfile();
+          setActiveModal("");
+        }}
       />
 
       <TechSelectModal
@@ -325,9 +347,15 @@ function ProfilePage() {
         title="Edit Database Management"
         options={TECHNOLOGIES.databases}
         selectedIds={profile.databases}
-        onClose={() => setActiveModal("")}
+        onClose={() => {
+          setProfile((prev) => ({ ...prev, databases: modalSnapshot }));
+          setActiveModal("");
+        }}
         onToggle={(id) => handleToggleSelection("databases", id)}
-        onSave={() => setActiveModal("")}
+        onSave={() => {
+          handleSaveProfile();
+          setActiveModal("");
+        }}
       />
 
       <InputModal

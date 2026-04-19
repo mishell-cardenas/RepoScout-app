@@ -92,6 +92,14 @@ https://www.youtube.com/watch?v=oGvXs9n5nFo
 
 <img width="1511" height="808" alt="Screenshot 2026-03-18 at 22 30 14" src="https://github.com/user-attachments/assets/c7022151-4ba7-4b6a-84e9-d0d532466a05" />
 
+## 🎨 About Design
+
+Given that RepoScout connects user's to GitHub's open-source repos, we decided to make the app assimilate to GitHub's design style. Therefore, we used its color scheme and typography to implement styling similar to Github. 
+
+Color scheme used: https://brand.github.com/foundations/color
+
+Typography used: https://brand.github.com/foundations/typography
+
 ## 🛠️ Tech Requirements
 
 Backend:

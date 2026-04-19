@@ -35,6 +35,7 @@ function ProfileSidebar(props) {
           type="button"
           className="btn btn-light border profile-sidebar-image-edit-button"
           onClick={onAddImage}
+          aria-label="Edit profile image"
         >
           <i className="bi bi-pencil"></i>
         </button>
@@ -43,13 +44,14 @@ function ProfileSidebar(props) {
       <div className="mt-4">
         <div className="d-flex align-items-center gap-2 mb-3">
           <h1 className="profile-sidebar-name">
-            Name: {firstName}, {lastName}
+            Name: {firstName} {lastName}
           </h1>
 
           <button
             type="button"
             className="btn btn-sm btn-light border"
             onClick={onEditInfo}
+            aria-label="Edit name"
           >
             <i className="bi bi-pencil"></i>
           </button>
@@ -61,6 +63,7 @@ function ProfileSidebar(props) {
             type="button"
             className="btn btn-sm btn-light border"
             onClick={onEditUsername}
+            aria-label="Edit GitHub username"
           >
             <i className="bi bi-pencil"></i>
           </button>

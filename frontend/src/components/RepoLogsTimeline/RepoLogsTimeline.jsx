@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import "./RepoLogsTimeline.css";
 import RepoLogsDropdown from "../RepoLogsDropdown/RepoLogsDropdown.jsx";
 
-function RepoLogsTimeline({ logs, setLogs }) {
+function RepoLogsTimeline({ logs, setLogs, onDeleteRequest }) {
   function groupLogsByDate(logList) {
     const groupedLogs = {};
 
@@ -50,14 +50,6 @@ function RepoLogsTimeline({ logs, setLogs }) {
     });
   }
 
-  function handleDeleteLog(deletedLogId) {
-    setLogs((prevLogs) => {
-      return prevLogs.filter((currentLog) => {
-        return currentLog._id !== deletedLogId;
-      });
-    });
-  }
-
   const groupedLogs = groupLogsByDate(logs);
   const sortedDates = sortGroupedDates(groupedLogs);
 
@@ -80,7 +72,7 @@ function RepoLogsTimeline({ logs, setLogs }) {
           <div key={dateKey} className="log-day-section">
             <div className="log-day-header">
               <div className="log-day-line"></div>
-              <h3 className="log-day-title">{dateKey}</h3>
+              <h2 className="log-day-title">{dateKey}</h2>
             </div>
 
             {sortedLogs.map((log) => {
@@ -89,7 +81,7 @@ function RepoLogsTimeline({ logs, setLogs }) {
                   key={log._id}
                   log={log}
                   onUpdateLog={handleUpdateLog}
-                  onDeleteLog={handleDeleteLog}
+                  onDeleteLog={() => onDeleteRequest(log._id)}
                 />
               );
             })}

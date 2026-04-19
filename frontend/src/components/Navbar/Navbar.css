@@ -30,7 +30,13 @@
 }
 
 .navbar-username {
-  color: #d0d7de;
-  font-size: 0.85rem;
+  color: white;
+  font-size: 0.95rem;
   font-weight: 600;
+  text-decoration: none;
+}
+
+.navbar-username:hover {
+  color: #d0d7de;
+  cursor: pointer;
 }

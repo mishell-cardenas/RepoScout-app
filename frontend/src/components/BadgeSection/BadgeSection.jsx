@@ -15,7 +15,7 @@ function BadgeSection(props) {
       <div className="d-flex flex-wrap gap-2 mt-2">
         {badges.map((badge) => {
           return (
-            <div key={badge.id} className="badge-section-badge-wrapper">
+            <div key={badge.id}>
               <img
                 src={badge.badgeUrl}
                 alt={badge.name}
@@ -26,6 +26,7 @@ function BadgeSection(props) {
                 type="button"
                 className="badge-section-delete-btn"
                 onClick={() => onRemoveBadge(badge.id)}
+                aria-label={`Remove ${badge.name}`}
               >
                 <i className="bi bi-x-lg"></i>
               </button>
@@ -45,6 +46,7 @@ function BadgeSection(props) {
           type="button"
           className="btn btn-sm btn-light border"
           onClick={onEdit}
+          aria-label={`Edit ${title}`}
         >
           <i className="bi bi-pencil"></i>
         </button>

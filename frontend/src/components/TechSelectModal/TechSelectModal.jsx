@@ -1,9 +1,32 @@
 import PropTypes from "prop-types";
 import "./TechSelectModal.css";
+import { useEffect, useRef } from "react";
 
 function TechSelectModal(props) {
   const { show, title, options, selectedIds, onClose, onToggle, onSave } =
     props;
+
+  const cancelButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (show) {
+      cancelButtonRef.current?.focus();
+    }
+  }, [show]);
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    }
+
+    if (show) {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [show, onClose]);
 
   if (!show) {
     return null;
@@ -62,6 +85,7 @@ function TechSelectModal(props) {
 
         <div className="d-flex justify-content-end gap-2 mt-4">
           <button
+            ref={cancelButtonRef}
             type="button"
             className="btn btn-outline-secondary"
             onClick={onClose}
@@ -77,21 +101,5 @@ function TechSelectModal(props) {
     </div>
   );
 }
-
-TechSelectModal.propTypes = {
-  show: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      badgeUrl: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  selectedIds: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onClose: PropTypes.func.isRequired,
-  onToggle: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-};
 
 export default TechSelectModal;
