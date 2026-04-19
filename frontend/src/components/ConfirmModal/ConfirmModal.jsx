@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import "./ConfirmModal.css";
+import { useEffect, useRef } from "react";
 
 function ConfirmModal(props) {
   const {
@@ -11,6 +12,28 @@ function ConfirmModal(props) {
     onConfirm,
     onCancel,
   } = props;
+
+  const cancelButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (show) {
+      cancelButtonRef.current?.focus();
+    }
+  }, [show]);
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        onCancel();
+      }
+    }
+
+    if (show) {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [show, onCancel]);
 
   if (!show) {
     return null;
@@ -35,6 +58,7 @@ function ConfirmModal(props) {
 
         <div className="d-flex justify-content-end gap-2 mt-4">
           <button
+            ref={cancelButtonRef}
             type="button"
             className="btn btn-outline-secondary"
             onClick={onCancel}
@@ -51,18 +75,8 @@ function ConfirmModal(props) {
           </button>
         </div>
       </div>
-    </div>
+    </div>  
   );
 }
-
-ConfirmModal.propTypes = {
-  show: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  confirmLabel: PropTypes.string,
-  confirmVariant: PropTypes.string,
-  onConfirm: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
-};
 
 export default ConfirmModal;

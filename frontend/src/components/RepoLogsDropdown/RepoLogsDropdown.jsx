@@ -74,20 +74,8 @@ function RepoLogsDropdown({ log, onUpdateLog, onDeleteLog }) {
     }
   }
 
-  async function handleDelete() {
-    try {
-      const response = await fetch(`/api/repo-logs/${log._id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete log");
-      }
-
-      onDeleteLog(log._id);
-    } catch (error) {
-      console.error("Error deleting log:", error);
-    }
+  function handleDelete() {
+    onDeleteLog(log._id);
   }
 
   return (

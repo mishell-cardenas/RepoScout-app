@@ -15,7 +15,7 @@ function BadgeSection(props) {
       <div className="d-flex flex-wrap gap-2 mt-2">
         {badges.map((badge) => {
           return (
-            <div key={badge.id} className="badge-section-badge-wrapper">
+            <div key={badge.id}>
               <img
                 src={badge.badgeUrl}
                 alt={badge.name}

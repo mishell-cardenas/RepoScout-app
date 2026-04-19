@@ -36,7 +36,7 @@ function RepoLogEntry({ onAddLog, repoName }) {
     const newLogEntry = {
       id: Date.now(),
       repoName: repoName,
-      date: formData.date,
+      date: formData.date + "T00:00:00",
       focusArea: formData.focusArea,
       filesModified: formData.filesModified,
       bugsFixed: formData.bugsFixed,
@@ -58,7 +58,7 @@ function RepoLogEntry({ onAddLog, repoName }) {
     <div className="contribution-form-wrapper">
       <form className="contribution-form" onSubmit={handleSubmit}>
         <div className="contribution-field-group">
-          <label htmlFor="dateTime" className="contribution-label">
+          <label htmlFor="date" className="contribution-label">
             Date:
           </label>
           <input

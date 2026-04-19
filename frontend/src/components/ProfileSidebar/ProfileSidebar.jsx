@@ -43,7 +43,7 @@ function ProfileSidebar(props) {
       <div className="mt-4">
         <div className="d-flex align-items-center gap-2 mb-3">
           <h1 className="profile-sidebar-name">
-            Name: {firstName}, {lastName}
+            Name: {firstName} {lastName}
           </h1>
 
           <button

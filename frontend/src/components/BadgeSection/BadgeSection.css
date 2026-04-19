@@ -38,7 +38,3 @@
   font-size: 0.65rem;
   cursor: pointer;
 }
-
-.badge-section-badge-wrapper:hover .badge-section-delete-btn {
-  display: flex;
-}

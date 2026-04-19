@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import RepoLogEntry from "../components/RepoLogEntry/RepoLogEntry.jsx";
 import RepoLogsTimeline from "../components/RepoLogsTimeline/RepoLogsTimeline.jsx";
+import ConfirmModal from "../components/ConfirmModal/ConfirmModal.jsx";
 import "./RepoLogs.css";
 
 function RepoLogPage() {
   const [logs, setLogs] = useState([]);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [logToDelete, setLogToDelete] = useState(null);
   const { repoName } = useParams();
 
   useEffect(() => {
@@ -53,6 +56,30 @@ function RepoLogPage() {
     }
   }
 
+  function handleDeleteRequest(logId) {
+    setLogToDelete(logId);
+    setShowDeleteConfirm(true);
+  }
+
+  async function handleConfirmDelete() {
+    try {
+      const response = await fetch(`/api/repo-logs/${logToDelete}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete log.");
+      }
+
+      setLogs((prevLogs) => prevLogs.filter((log) => log._id !== logToDelete));
+    } catch (error) {
+      console.error("Error deleting log:", error);
+    } finally {
+      setShowDeleteConfirm(false);
+      setLogToDelete(null);
+    }
+  }
+
   return (
     <div>
       <Navbar />
@@ -68,11 +95,27 @@ function RepoLogPage() {
             </div>
 
             <div className="project-log-right">
-              <RepoLogsTimeline logs={logs} setLogs={setLogs} />
+              <RepoLogsTimeline
+                logs={logs}
+                setLogs={setLogs}
+                onDeleteRequest={handleDeleteRequest}
+              />
             </div>
           </div>
         </div>
       </div>
+      <ConfirmModal
+        show={showDeleteConfirm}
+        title="Delete Log Entry"
+        message="Are you sure you want to delete this log entry? This cannot be undone."
+        confirmLabel="Delete Entry"
+        confirmVariant="danger"
+        onConfirm={handleConfirmDelete}
+        onCancel={() => {
+          setShowDeleteConfirm(false);
+          setLogToDelete(null);
+        }}
+      />
     </div>
   );
 }
