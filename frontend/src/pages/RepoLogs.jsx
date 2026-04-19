@@ -83,7 +83,7 @@ function RepoLogPage() {
   return (
     <div>
       <Navbar />
-      <div className="project-log-page">
+      <main className="project-log-page">
         <div className="project-log-container py-4 px-4 mt-3">
           <h1 className="project-log-page-title bi-journal-code">
             Repo: {repoName}
@@ -103,7 +103,8 @@ function RepoLogPage() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
+
       <ConfirmModal
         show={showDeleteConfirm}
         title="Delete Log Entry"

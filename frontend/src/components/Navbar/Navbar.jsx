@@ -17,7 +17,7 @@ function Navbar() {
     <nav className="navbar-custom navbar navbar-expand-lg px-4">
       <div className="container-fluid">
         <div className="d-flex align-items-center gap-4">
-          <Link to="/" className="navbar-icon-link">
+          <Link to="/" className="navbar-icon-link" aria-label="Home">
             <i className="bi bi-file-earmark-code navbar-github-icon"></i>
           </Link>
           <div className="d-flex align-items-center gap-4">

@@ -72,7 +72,7 @@ function RepoLogsTimeline({ logs, setLogs, onDeleteRequest }) {
           <div key={dateKey} className="log-day-section">
             <div className="log-day-header">
               <div className="log-day-line"></div>
-              <h3 className="log-day-title">{dateKey}</h3>
+              <h2 className="log-day-title">{dateKey}</h2>
             </div>
 
             {sortedLogs.map((log) => {

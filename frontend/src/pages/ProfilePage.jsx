@@ -242,7 +242,7 @@ function ProfilePage() {
     <div className="profile-page">
       <Navbar />
 
-      <div className="container-fluid profile-page-content py-4 px-4 mt-5">
+      <main className="container-fluid profile-page-content py-4 px-4 mt-5">
         {message && <div className="alert alert-info">{message}</div>}
         {saving && (
           <div className="alert alert-secondary">Saving changes...</div>
@@ -308,7 +308,7 @@ function ProfilePage() {
             />
           </div>
         </div>
-      </div>
+      </main>
 
       <TechSelectModal
         show={activeModal === "languages"}

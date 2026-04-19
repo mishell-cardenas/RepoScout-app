@@ -6,15 +6,13 @@ import "./LoginPage.css";
 
 function LoginPage() {
   const [isRegistering, setIsRegistering] = useState(false);
-  const [regStep, setRegStep] = useState(1); // 1 = credentials, 2 = tech selection
+  const [regStep, setRegStep] = useState(1);
 
-  // Credentials
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  // Tech selections (arrays of IDs)
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [selectedTools, setSelectedTools] = useState([]);
   const [selectedDatabases, setSelectedDatabases] = useState([]);
@@ -121,7 +119,7 @@ function LoginPage() {
           <i className="bi bi-file-earmark-code login-navbar-icon"></i>
         </nav>
 
-        <div className="login-container">
+        <main className="login-container">
           <h1 className="login-brand">RepoScout</h1>
           <p className="login-tagline">Stay on top of your FOSS journey!</p>
 
@@ -170,7 +168,7 @@ function LoginPage() {
               Create one
             </button>
           </p>
-        </div>
+        </main>
       </div>
     );
   }
@@ -183,7 +181,7 @@ function LoginPage() {
           <i className="bi bi-file-earmark-code login-navbar-icon"></i>
         </nav>
 
-        <div className="login-container">
+        <main className="login-container">
           <h1 className="login-brand">Create Account</h1>
           <p className="login-tagline">Step 1 of 2 — Your info</p>
 
@@ -245,7 +243,7 @@ function LoginPage() {
               Sign in
             </button>
           </p>
-        </div>
+        </main>
       </div>
     );
   }
@@ -257,7 +255,7 @@ function LoginPage() {
         <i className="bi bi-file-earmark-code login-navbar-icon"></i>
       </nav>
 
-      <div className="login-container login-container-wide">
+      <main className="login-container login-container-wide">
         <h1 className="login-brand-sm">
           Almost there, {firstName || username}!
         </h1>
@@ -315,7 +313,7 @@ function LoginPage() {
             Skip — I&apos;ll add these later
           </button>
         </p>
-      </div>
+      </main>
     </div>
   );
 }
