@@ -46,10 +46,22 @@ function InputModal(props) {
   });
 
   return (
-    <div className="input-modal-backdrop" onClick={onCancel}>
-      <div className="input-modal-box" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="input-modal-backdrop"
+      role="presentation"
+      onClick={onCancel}
+    >
+      <div
+        className="input-modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirm-modal-title"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h3 className="input-modal-title mb-0">{title}</h3>
+          <h3 className="input-modal-title mb-0" id="confirm-modal-title">
+            {title}
+          </h3>
           <button
             type="button"
             className="btn btn-light border"

@@ -102,4 +102,20 @@ function TechSelectModal(props) {
   );
 }
 
+TechSelectModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      badgeUrl: PropTypes.string,
+    }),
+  ).isRequired,
+  selectedIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onClose: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+};
+
 export default TechSelectModal;
