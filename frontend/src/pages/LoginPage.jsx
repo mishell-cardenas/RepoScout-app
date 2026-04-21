@@ -208,7 +208,7 @@ function LoginPage() {
               type="text"
               className="form-control login-input"
               placeholder="Last Name"
-              aria-labels="Last Name"
+              aria-label="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
