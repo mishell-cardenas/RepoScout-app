@@ -1,23 +1,7 @@
 import PropTypes from "prop-types";
+import { langColor } from "../../utils/langColors";
+import { scoreToPercent } from "../../utils/scoring";
 import "./RepoCard.css";
-
-const LANG_COLORS = {
-  javascript: "#f1e05a",
-  python: "#3572A5",
-  typescript: "#3178c6",
-  java: "#b07219",
-  go: "#00ADD8",
-  rust: "#dea584",
-  c: "#555555",
-  "c++": "#f34b7d",
-  ruby: "#701516",
-  php: "#4F5D95",
-  html: "#e34c26",
-  css: "#563d7c",
-  shell: "#89e051",
-  swift: "#F05138",
-  kotlin: "#A97BFF",
-};
 
 function formatCount(n) {
   if (n >= 1000) {
@@ -29,18 +13,24 @@ function formatCount(n) {
 function RepoCard(props) {
   const { repo, score, reasons, isTracked, onTrack } = props;
 
-  const langColor =
-    LANG_COLORS[(repo.language || "").toLowerCase()] || "#8b949e";
-
   return (
     <article className="repo-card">
-      <div className="d-flex justify-content-between align-items-center mb-2">
-        <span className="repo-card-match-label">
-          <i className="bi bi-rocket-takeoff"></i> Match score
-        </span>
-        <span className="repo-card-score-badge">{score}</span>
+      <div className="mb-2">
+        <div className="d-flex justify-content-between align-items-center mb-1">
+          <span className="repo-card-match-label">
+            <i className="bi bi-rocket-takeoff"></i> Match score
+          </span>
+          <span className="repo-card-score-badge">
+            {scoreToPercent(score)}% match
+          </span>
+        </div>
+        <div className="repo-card-score-bar-outer">
+          <div
+            className="repo-card-score-bar-inner"
+            style={{ width: `${scoreToPercent(score)}%` }}
+          />
+        </div>
       </div>
-
       <div className="d-flex align-items-center gap-2 mb-2">
         <i className="bi bi-journal-code repo-card-repo-icon"></i>
         <a
@@ -59,6 +49,16 @@ function RepoCard(props) {
         {repo.description || "No description provided."}
       </p>
 
+      {repo.topics && repo.topics.length > 0 && (
+        <div className="d-flex flex-wrap gap-1 mb-2">
+          {repo.topics.slice(0, 4).map((topic) => (
+            <span key={topic} className="repo-card-topic">
+              {topic}
+            </span>
+          ))}
+        </div>
+      )}
+
       {reasons.length > 0 && (
         <div className="d-flex flex-wrap gap-1 mb-2">
           {reasons.map((reason, i) => (
@@ -74,7 +74,7 @@ function RepoCard(props) {
           <span className="repo-card-stat">
             <span
               className="repo-card-lang-dot"
-              style={{ backgroundColor: langColor }}
+              style={{ backgroundColor: langColor(repo.language) }}
             />
             {repo.language}
           </span>
@@ -84,11 +84,11 @@ function RepoCard(props) {
           <i className="bi bi-star"></i> {formatCount(repo.stars)}
         </span>
 
-        <span className="repo-card-stat">
+        <span className="repo-card-stat" title="Times forked">
           <i className="bi bi-diagram-2"></i> {formatCount(repo.forks || 0)}
         </span>
 
-        <span className="repo-card-stat">
+        <span className="repo-card-stat" title="Open issues + pull requests">
           <i className="bi bi-circle-fill repo-card-issue-dot"></i>{" "}
           {repo.openIssues || 0}
         </span>

@@ -1,6 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Pagination from "../components/Pagination/Pagination.jsx";
+import { langColor } from "../utils/langColors.js";
 import "./HomePage.css";
 
 const REPOS_PER_PAGE = 12;
@@ -177,6 +179,14 @@ function HomePage() {
 
         {!loading && filtered.length > 0 && (
           <>
+            <Link to="/matches" className="home-page-cta">
+              <i className="bi bis-stars"></i>
+              <span>Looking for repos tailored to your tech stack?</span>
+              <span className="home-page-cta-action">
+                See Your Matches <i className="bbi bi-arrow-right"></i>
+              </span>
+            </Link>
+
             <p className="home-page-results-count">
               {filtered.length} repositories — page {currentPage} of{" "}
               {totalPages}
@@ -220,16 +230,25 @@ function HomePage() {
                     <div className="home-repo-stats">
                       {repo.language && (
                         <span className="home-repo-stat">
-                          <i className="bi bi-circle-fill home-repo-lang-dot"></i>
+                          <span
+                            className="home-repo-lang-dot-colored"
+                            style={{
+                              backgroundColor: langColor(repo.language),
+                            }}
+                          />
                           {repo.language}
                         </span>
                       )}
                       <span className="home-repo-stat">
                         <i className="bi bi-star"></i> {formatCount(repo.stars)}
                       </span>
-                      <span className="home-repo-stat">
+                      <span className="home-repo-stat" title="Times forked">
                         <i className="bi bi-diagram-2"></i>{" "}
                         {formatCount(repo.forks || 0)}
+                      </span>
+                      <span className="home-repo-stat" title="Open issues + pull requests">
+                        <i className="bi bi-circle-fill home-repo-issue-dot"></i>{" "}
+                        {repo.openIssues || 0}
                       </span>
                     </div>
 

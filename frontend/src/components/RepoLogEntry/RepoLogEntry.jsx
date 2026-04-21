@@ -86,12 +86,17 @@ function RepoLogEntry({ onAddLog, repoName }) {
 
         <div className="contribution-field-group">
           <label htmlFor="filesModified" className="contribution-label">
-            Files created or modified:
+            Files you worked on (list paths):
           </label>
+          <p className="contribution-help">
+            Type the filenames or paths you touched, comma-separated. This is a
+            text description. No files are uploaded.
+          </p>
           <textarea
             id="filesModified"
             name="filesModified"
             className="contribution-textarea"
+            placeholder="e.g., src/App.jsx, README.md"
             value={formData.filesModified}
             onChange={handleChange}
             rows="3"

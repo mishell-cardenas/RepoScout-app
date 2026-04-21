@@ -198,3 +198,11 @@
   color: #4a4a4a;
   cursor: not-allowed;
 }
+
+.login-helper-note {
+  font-size: 0.8rem;
+  color: #57606a;
+  text-align: center;
+  margin-top: 12px;
+  max-width: 360px;
+}

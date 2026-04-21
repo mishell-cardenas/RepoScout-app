@@ -152,3 +152,48 @@
   font-size: 0.75rem;
   font-weight: 600;
 }
+
+.home-page-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #ddf4ff 0%, #eaf2ff 100%);
+  border: 1px solid #b6e3ff;
+  border-radius: 12px;
+  color: #0969da;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.home-page-cta:hover {
+  background: linear-gradient(90deg, #b6e3ff 0%, #ddf4ff 100%);
+  transform: translateY(-1px);
+  color: #0969da;
+}
+
+.home-page-cta-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.home-repo-lang-dot-colored {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.home-repo-issue-dot {
+  font-size: 0.45rem;
+  color: #1a7f37;
+}
