@@ -246,7 +246,10 @@ function HomePage() {
                         <i className="bi bi-diagram-2"></i>{" "}
                         {formatCount(repo.forks || 0)}
                       </span>
-                      <span className="home-repo-stat" title="Open issues + pull requests">
+                      <span
+                        className="home-repo-stat"
+                        title="Open issues + pull requests"
+                      >
                         <i className="bi bi-circle-fill home-repo-issue-dot"></i>{" "}
                         {repo.openIssues || 0}
                       </span>

@@ -104,6 +104,7 @@ RepoLogsTimeline.propTypes = {
     }),
   ).isRequired,
   setLogs: PropTypes.func.isRequired,
+  onDeleteRequest: PropTypes.func.isRequired,
 };
 
 export default RepoLogsTimeline;

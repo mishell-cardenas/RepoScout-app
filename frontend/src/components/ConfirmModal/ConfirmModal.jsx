@@ -40,10 +40,22 @@ function ConfirmModal(props) {
   }
 
   return (
-    <div className="confirm-modal-backdrop" onClick={onCancel}>
-      <div className="confirm-modal-box" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="confirm-modal-backdrop"
+      role="presentation"
+      onClick={onCancel}
+    >
+      <div
+        className="confirm-modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirm-modal-title"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h3 className="confirm-modal-title mb-0">{title}</h3>
+          <h3 className="confirm-modal-title mb-0" id="confirm-modal-title">
+            {title}
+          </h3>
 
           <button
             type="button"
@@ -78,5 +90,15 @@ function ConfirmModal(props) {
     </div>
   );
 }
+
+ConfirmModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  confirmLabel: PropTypes.string,
+  confirmVariant: PropTypes.string,
+  onConfirm: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
 
 export default ConfirmModal;
