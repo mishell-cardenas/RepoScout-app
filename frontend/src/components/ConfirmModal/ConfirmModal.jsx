@@ -75,7 +75,7 @@ function ConfirmModal(props) {
           </button>
         </div>
       </div>
-    </div>  
+    </div>
   );
 }
 

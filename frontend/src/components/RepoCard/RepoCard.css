@@ -125,3 +125,28 @@
   font-size: 0.75rem;
   font-weight: 600;
 }
+
+.repo-card-topic {
+  background-color: #ddf4ff;
+  color: #0969da;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #b6e3ff;
+}
+
+.repo-card-score-bar-outer {
+  width: 100%;
+  height: 6px;
+  background-color: #eaeef2;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.repo-card-score-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #0969da 0%, #4eb8b8 100%);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}

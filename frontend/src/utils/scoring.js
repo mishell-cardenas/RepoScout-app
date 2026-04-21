@@ -96,3 +96,9 @@ export function rankRepos(repos, profile, limit = 20) {
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
 }
+
+export const SCORE_MAX = 10;
+
+export function scoreToPercent(score) {
+  return Math.min(100, Math.max(0, Math.round((score / SCORE_MAX) * 100)));
+}

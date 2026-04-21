@@ -131,7 +131,7 @@ function LoginPage() {
             <input
               type="text"
               className="form-control login-input"
-              placeholder="GitHub Username"
+              placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -152,6 +152,10 @@ function LoginPage() {
             >
               {submitting ? "Please wait..." : "Login"}
             </button>
+            <p className="login-helper-note">
+              RepoScout accounts are seperate from GitHub. Feel free to use any
+              username you like.
+            </p>
           </form>
 
           <p className="login-toggle-text">
@@ -207,7 +211,7 @@ function LoginPage() {
             <input
               type="text"
               className="form-control login-input"
-              placeholder="GitHub Username"
+              placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -227,6 +231,10 @@ function LoginPage() {
             >
               Next — Pick your skills
             </button>
+            <p className="login-helper-note">
+              RepoScount accounts are seperate from GitHub. Feel free to use any
+              username you like.
+            </p>
           </form>
 
           <p className="login-toggle-text">
