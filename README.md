@@ -19,7 +19,7 @@ RepoScout is a web application that helps developers organize and track their op
 
 https://reposcout-app-1.onrender.com/
 
-## 📄 Usability Report 
+## 📄 Usability Report
 
 https://docs.google.com/document/d/1gjYDm4C5iltiIhUDrywzWpwnPXTQAicB/edit
 
@@ -35,7 +35,7 @@ https://docs.google.com/presentation/d/12ldf5UGDdYHakuqcsu8XN2qo2WKiWl5JAH5HUkK9
 
 Project 3: https://www.youtube.com/watch?v=oGvXs9n5nFo
 
-Project 4: 
+Project 4:
 
 ## How to use RepoScout
 

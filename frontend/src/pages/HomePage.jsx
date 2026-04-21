@@ -151,7 +151,7 @@ function HomePage() {
             <input
               type="text"
               className="form-control home-page-search-input"
-              aria-label = "Search repositories"
+              aria-label="Search repositories"
               placeholder="Search repos..."
               value={searchFilter}
               onChange={(e) => setSearchFilter(e.target.value)}
