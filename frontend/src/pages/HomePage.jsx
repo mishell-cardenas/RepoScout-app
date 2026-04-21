@@ -126,7 +126,7 @@ function HomePage() {
     <div className="home-page">
       <Navbar />
 
-      <div className="container-fluid home-page-content py-4 px-4 mt-5">
+      <main className="container-fluid home-page-content py-4 px-4 mt-5">
         <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
           <div className="d-flex align-items-center gap-2">
             <i className="bi bi-collection home-page-icon"></i>
@@ -136,6 +136,7 @@ function HomePage() {
           <div className="d-flex gap-2 flex-wrap">
             <select
               className="form-select home-page-language-select"
+              aria-label="Filter repositories by language"
               value={languageFilter}
               onChange={(e) => setLanguageFilter(e.target.value)}
             >
@@ -150,6 +151,7 @@ function HomePage() {
             <input
               type="text"
               className="form-control home-page-search-input"
+              aria-label = "Search repositories"
               placeholder="Search repos..."
               value={searchFilter}
               onChange={(e) => setSearchFilter(e.target.value)}
@@ -285,7 +287,7 @@ function HomePage() {
             />
           </>
         )}
-      </div>
+      </main>
     </div>
   );
 }

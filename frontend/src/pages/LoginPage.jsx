@@ -132,6 +132,7 @@ function LoginPage() {
               type="text"
               className="form-control login-input"
               placeholder="Username"
+              aria-label="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -140,6 +141,7 @@ function LoginPage() {
               type="password"
               className="form-control login-input"
               placeholder="Password"
+              aria-label="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -198,6 +200,7 @@ function LoginPage() {
               type="text"
               className="form-control login-input"
               placeholder="First Name"
+              aria-label="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
@@ -205,6 +208,7 @@ function LoginPage() {
               type="text"
               className="form-control login-input"
               placeholder="Last Name"
+              aria-labels="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
@@ -212,6 +216,7 @@ function LoginPage() {
               type="text"
               className="form-control login-input"
               placeholder="Username"
+              aria-label="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -220,6 +225,7 @@ function LoginPage() {
               type="password"
               className="form-control login-input"
               placeholder="Password (min 6 characters)"
+              aria-label="Password (min 6 characters)"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

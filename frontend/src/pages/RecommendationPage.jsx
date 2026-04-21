@@ -169,6 +169,7 @@ function RecommendationPage() {
             <input
               type="text"
               className="form-control recommendation-search-input"
+              aria-label="Filter matched repositories"
               placeholder="Filter repos..."
               value={searchFilter}
               onChange={(e) => setSearchFilter(e.target.value)}
